@@ -62,7 +62,7 @@ export class AuthService {
 
   observeUserState() {
     this.firebaseAuthenticationService.authState.subscribe((userState) => {
-      userState && this.ngZone.run(() => this.router.navigate(['dashboard']))
+      userState && this.ngZone.run(() => this.router.navigate(['/home/dashboard']))
     })
   }
 
