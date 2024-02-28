@@ -7,4 +7,5 @@ export const environment = {
     authDomain: 'auth-login-f9ad6.firebaseapp.com',
     messagingSenderId: '339911928210',
   },
+  urlAPi:"http://34.229.231.66/"
 };

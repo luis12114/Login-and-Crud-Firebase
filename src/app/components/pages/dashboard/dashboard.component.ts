@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Computer } from 'src/app/shared/interfaces/computador';
 import { CrudServicesService } from 'src/app/shared/services/crud-services.service';
+import { ApiNodeService } from 'src/app/shared/services/api-node.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -21,8 +22,9 @@ export class DashboardComponent implements OnInit {
   add:any=true;
   id:any=''
   data:any=[];
+  rest:any='';
 
-  constructor(private formBuilder: FormBuilder, private crudService:CrudServicesService){
+  constructor(private formBuilder: FormBuilder, private crudService:CrudServicesService, private nodeApi:ApiNodeService){
     this.formulaic = this.formBuilder.group(
       {
         name:['', Validators.required],
@@ -92,6 +94,16 @@ export class DashboardComponent implements OnInit {
       this.edit=false;
       this.add=true;
     },1000);
+  }
+
+  sumaApi(){
+    let data= {
+      "numA": 52,
+      "numB": 2
+    }
+    this.nodeApi.getRes(data).subscribe((res:any) =>{
+      this.rest=res
+    });
   }
 
 }
